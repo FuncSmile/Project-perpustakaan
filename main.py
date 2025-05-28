@@ -1,7 +1,16 @@
-from crud import menu_gudang
-from utils import menu_kasir
+from src.controllers.gudang_controller import menu_gudang
+from src.controllers.kasir_controller import menu_kasir
+import os
+
+DATA_DIR = "src/data"
+
+# Pastikan folder data ada
+def ensure_data_dir():
+    if not os.path.exists(DATA_DIR):
+        os.makedirs(DATA_DIR)
 
 def menu_utama():
+    ensure_data_dir()
     while True:
         print("\n=== Sistem Perpustakaan ===")
         print("1. Gudang Perpustakaan ")
