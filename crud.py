@@ -1,8 +1,8 @@
-from utils import load_data, save_data, tampilkan_buku, auto_id
+from utils import *
 
 def menu_gudang():
     while True:
-        data = load_data()  # Load data setiap awal loop
+        data = load_buku()  # Load data setiap awal loop
 
         print("\n=== Menu Gudang Buku ===")
         print("1. Tambah Buku")
@@ -15,28 +15,28 @@ def menu_gudang():
 
         if pilihan == '1':
             id_baru = auto_id(data, prefix="B", key="id")
-            judul = input("Masukkan Judul Buku: ")
-            penulis = input("Masukkan Penulis Buku: ")
+            judul = input("Masukkan Judul Buku: ").upper()
+            penulis = input("Masukkan Penulis Buku: ").upper()
             data.append({"id": id_baru, "judul": judul, "penulis": penulis})
-            save_data(data)
+            save_buku(data)
             print("✅ Buku berhasil ditambahkan.")
         elif pilihan == '2':
             tampilkan_buku(data)
         elif pilihan == '3':
-            id_buku = input("Masukkan ID Buku yang ingin diubah: ")
+            id_buku = input("Masukkan ID Buku yang ingin diubah: ").upper()
             for buku in data:
                 if buku['id'] == id_buku:
-                    buku['judul'] = input("Masukkan judul baru: ")
-                    buku['penulis'] = input("Masukkan penulis baru: ")
-                    save_data(data)
+                    buku['judul'] = input("Masukkan judul baru: ").upper()
+                    buku['penulis'] = input("Masukkan penulis baru: ").upper()
+                    save_buku(data)
                     print("✅ Data buku berhasil diubah.")
                     break
             else:
                 print("❌ Buku tidak ditemukan.")
         elif pilihan == '4':
-            id_buku = input("Masukkan ID Buku yang ingin dihapus: ")
+            id_buku = input("Masukkan ID Buku yang ingin dihapus: ").upper()
             data = [buku for buku in data if buku['id'] != id_buku]
-            save_data(data)
+            save_buku(data)
             print("✅ Buku berhasil dihapus.")
         elif pilihan == '5':
             break
