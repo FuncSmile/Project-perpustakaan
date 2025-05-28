@@ -4,8 +4,8 @@ from utils import menu_kasir
 def menu_utama():
     while True:
         print("\n=== Sistem Perpustakaan ===")
-        print("1. Gudang Perpustakaan (CRUD Buku)")
-        print("2. Kasir Perpustakaan (Peminjaman Buku)")
+        print("1. Gudang Perpustakaan ")
+        print("2. Kasir Perpustakaan")
         print("3. Keluar")
 
         pilihan = input("Pilih menu (1-3): ")
